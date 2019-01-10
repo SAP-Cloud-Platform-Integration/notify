@@ -1,7 +1,7 @@
 {
   "definitions": {},
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://github.com/SAP-Cloud-Platform-Integration/notify/schema.json",
+  "$id": "https://raw.githubusercontent.com/SAP-Cloud-Platform-Integration/notify/master/notify_schema.json",
   "type": "object",
   "title": "Notify Schema",
   "required": [
