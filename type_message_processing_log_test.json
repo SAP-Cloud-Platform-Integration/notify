@@ -1,0 +1,65 @@
+{
+  "d": {
+    "__count": "102",
+    "results": [{
+      "__metadata": {
+        "id": "https://mock-tmn.hci.cn1.hana.ondemand.com:443/api/v1/MessageProcessingLogs('AFxPpAsrI--CIlDbD7RQhPdbWRcY')",
+        "uri": "https://mock-tmn.hci.cn1.hana.ondemand.com:443/api/v1/MessageProcessingLogs('AFxPpAsrI--CIlDbD7RQhPdbWRcY')",
+        "type": "com.sap.hci.api.MessageProcessingLog"
+      },
+      "MessageGuid": "AFxPpAsrI--CIlDbD7RQhPdbWRcY",
+      "CorrelationId": "AFxPpAsMyQlRvKW0hT1HcKiqFkq4",
+      "ApplicationMessageId": null,
+      "ApplicationMessageType": null,
+      "LogStart": "/Date(1548723211410)/",
+      "LogEnd": "/Date(1548723211486)/",
+      "Sender": null,
+      "Receiver": null,
+      "IntegrationFlowName": "C4CtoPropertyManageSystem_individualProduct",
+      "Status": "FAILED",
+      "AlternateWebLink": "https://mock-tmn.hci.cn1.hana.ondemand.com:443/itspaces/shell/monitoring/MessageDetails/%7B%22messageGuid%22%3A%22AFxPpAsrI--CIlDbD7RQhPdbWRcY%22%7D",
+      "IntegrationArtifact": {
+        "__metadata": {
+          "type": "com.sap.hci.api.IntegrationArtifact"
+        },
+        "Id": "C4CtoPropertyManageSystem_individualProduct",
+        "Name": "C4CtoPropertyManageSystem_individualProduct",
+        "Type": "INTEGRATION_FLOW"
+      },
+      "LogLevel": "INFO",
+      "CustomStatus": "FAILED",
+      "TransactionId": "e22cf8bcd6504719997c411b3d2dfcba",
+      "PreviousComponentName": "CPI_mock",
+      "CustomHeaderProperties": {
+        "__deferred": {
+          "uri": "https://mock-tmn.hci.cn1.hana.ondemand.com:443/api/v1/MessageProcessingLogs('AFxPpAsrI--CIlDbD7RQhPdbWRcY')/CustomHeaderProperties"
+        }
+      },
+      "MessageStoreEntries": {
+        "__deferred": {
+          "uri": "https://mock-tmn.hci.cn1.hana.ondemand.com:443/api/v1/MessageProcessingLogs('AFxPpAsrI--CIlDbD7RQhPdbWRcY')/MessageStoreEntries"
+        }
+      },
+      "ErrorInformation": {
+        "__deferred": {
+          "uri": "https://mock-tmn.hci.cn1.hana.ondemand.com:443/api/v1/MessageProcessingLogs('AFxPpAsrI--CIlDbD7RQhPdbWRcY')/ErrorInformation"
+        }
+      },
+      "AdapterAttributes": {
+        "__deferred": {
+          "uri": "https://mock-tmn.hci.cn1.hana.ondemand.com:443/api/v1/MessageProcessingLogs('AFxPpAsrI--CIlDbD7RQhPdbWRcY')/AdapterAttributes"
+        }
+      },
+      "Attachments": {
+        "__deferred": {
+          "uri": "https://mock-tmn.hci.cn1.hana.ondemand.com:443/api/v1/MessageProcessingLogs('AFxPpAsrI--CIlDbD7RQhPdbWRcY')/Attachments"
+        }
+      },
+      "Runs": {
+        "__deferred": {
+          "uri": "https://mock-tmn.hci.cn1.hana.ondemand.com:443/api/v1/MessageProcessingLogs('AFxPpAsrI--CIlDbD7RQhPdbWRcY')/Runs"
+        }
+      }
+    }]
+  }
+}
