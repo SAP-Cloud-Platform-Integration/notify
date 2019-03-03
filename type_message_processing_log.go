@@ -1,6 +1,17 @@
 package main
 
-import "encoding/json"
+import (
+	"encoding/json"
+	"io/ioutil"
+)
+
+func ParseMessageProcessingLogFromFile(p string) *MessageProcessingLog {
+
+	dat, _ := ioutil.ReadFile(p)
+
+	return ParseMessageProcessingLogFromString(dat)
+
+}
 
 // ParseMessageProcessingLogFromString
 func ParseMessageProcessingLogFromString(s []byte) *MessageProcessingLog {

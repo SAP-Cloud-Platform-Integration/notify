@@ -1,16 +1,23 @@
 {
-  "interval": 60,
   "smtp": {
     "username": "username",
     "password": "password",
     "server": "1.2.3.4",
     "port": "465"
   },
-  "tenants": [{
-    "name": "sample",
-    "host": "e600033-tmn.hci.cn1.hana.ondemand.com",
-    "username": "username",
-    "password": "password",
-    "contact": "theo.sun@outlook.com"
-  }]
+  "tenants": [
+    {
+      "interval": 60,
+      "name": "sample",
+      "host": "mock-tmn.hci.cn1.hana.ondemand.com",
+      "username": "username",
+      "password": "password",
+      "contact": [
+        {
+          "name": "Theo Sun",
+          "email": "theo.sun@outlook.com"
+        }
+      ]
+    }
+  ]
 }

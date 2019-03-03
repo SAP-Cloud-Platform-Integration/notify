@@ -18,7 +18,7 @@ func TestParseConfigFromPath(t *testing.T) {
 			"basic test",
 			args{"./sample_config.json"},
 			&Config{
-				Interval: 60,
+
 				SMTP: SMTP{
 					"username",
 					"password",
@@ -26,11 +26,15 @@ func TestParseConfigFromPath(t *testing.T) {
 					"465",
 				},
 				Tenants: []Tenant{Tenant{
+					60,
 					"sample",
-					"e600033-tmn.hci.cn1.hana.ondemand.com",
+					"mock-tmn.hci.cn1.hana.ondemand.com",
 					"username",
 					"password",
-					"theo.sun@outlook.com",
+					[]Contact{{
+						"Theo Sun",
+						"theo.sun@outlook.com",
+					}},
 				}},
 			},
 		},

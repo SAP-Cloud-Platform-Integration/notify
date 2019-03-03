@@ -5,11 +5,15 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/sirupsen/logrus"
+
 	"github.com/imroc/req"
 )
 
-func GetFailedInformationFor(t Tenant, from time.Time) {
-	if res, err := req.Get(
+// GetFailedInformationFor specific tenant
+func GetFailedInformationFor(t Tenant, from time.Time) *MessageProcessingLog {
+	rt := &MessageProcessingLog{}
+	res, err := req.Get(
 		fmt.Sprintf("https://%s/api/v1/MessageProcessingLogs", t.Host),
 		req.Header{
 			"Authorization": fmt.Sprintf(
@@ -18,17 +22,34 @@ func GetFailedInformationFor(t Tenant, from time.Time) {
 			),
 		},
 		req.QueryParam{
-			"$format":      "json",
+			"$orderby":     "LogEnd desc",
 			"$inlinecount": "allpages",
-			"$filter":      "Status eq 'FAILED'",
+			// in json format
+			"$format": "json",
+			// only fetch 100 records
+			"$top": 100,
+			// only fetch failed logs
+			"$filter": fmt.Sprintf("Status eq 'FAILED' and LogEnd ge datetime'%s'", formatTime(from)),
 		},
-	); err != nil {
-		panic(err)
-	} else {
-		logs := &MessageProcessingLog{}
-		if err := res.ToJSON(logs); err != nil {
-			panic(err)
-		}
+	)
+	if err != nil {
+		logrus.Error(err)
 	}
+
+	statusCode := res.Response().StatusCode
+
+	if statusCode != 200 {
+		logrus.Errorf("access cpi data failed, request url: %s, response code: %d", res.Request().URL.String(), statusCode)
+	}
+
+	if statusCode == 200 {
+
+		if err := res.ToJSON(rt); err != nil {
+			logrus.Error(err)
+		}
+
+	}
+
+	return rt
 
 }
