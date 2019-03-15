@@ -41,3 +41,7 @@ This application will periodic fetch CPI processing log (based on the [SAP CPI O
 ## The other way to notify user error happened
 
 The CPI developer could define the `exception subprocess`, and invoke rest API to send email (or use the SMTP adapter).
+
+## Email template
+
+![](https://res.cloudinary.com/digf90pwi/image/upload/v1552638002/2019-03-15_16-19-05_bdxheh.png)

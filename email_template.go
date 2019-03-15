@@ -219,6 +219,7 @@ func FormatTemplate(data NotificationModel) string {
 	return buf.String()
 }
 
+// NotificationModel type
 type NotificationModel struct {
 	Tenant      Tenant
 	ContactName string
@@ -227,6 +228,7 @@ type NotificationModel struct {
 	Artifacts   []Artifact
 }
 
+// Artifact type
 type Artifact struct {
 	ArtifactName string
 	Errors       []Result

@@ -5,14 +5,14 @@ import (
 
 	"github.com/sirupsen/logrus"
 
-	"gopkg.in/gomail.v2"
+	gomail "gopkg.in/gomail.v2"
 )
+
+const EMAIL_TITLE = "CPI Error Notification"
 
 // EmailPayload entity
 type EmailPayload struct {
-	From    string
 	To      []string
-	Title   string
 	Content string
 }
 
@@ -23,9 +23,9 @@ type EmailSender struct {
 
 func (s *EmailSender) SendEmail(payload EmailPayload) {
 	m := gomail.NewMessage()
-	m.SetHeader("From", payload.From)
+	m.SetHeader("From", s.config.Username)
 	m.SetHeader("To", payload.To...)
-	m.SetHeader("Subject", payload.Title)
+	m.SetHeader("Subject", EMAIL_TITLE)
 	m.SetBody("text/html", payload.Content)
 	if err := s.mailer.DialAndSend(m); err != nil {
 		logrus.Error(err)
