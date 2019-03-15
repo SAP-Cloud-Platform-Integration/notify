@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/sirupsen/logrus"
+	"github.com/golang/glog"
 
 	"github.com/imroc/req"
 )
@@ -33,19 +33,19 @@ func GetFailedInformationFor(t Tenant, from time.Time) *MessageProcessingLog {
 		},
 	)
 	if err != nil {
-		logrus.Error(err)
+		glog.Error(err)
 	}
 
 	statusCode := res.Response().StatusCode
 
 	if statusCode != 200 {
-		logrus.Errorf("access cpi data failed, request url: %s, response code: %d", res.Request().URL.String(), statusCode)
+		glog.Errorf("access cpi data failed, request url: %s, response code: %d", res.Request().URL.String(), statusCode)
 	}
 
 	if statusCode == 200 {
 
 		if err := res.ToJSON(rt); err != nil {
-			logrus.Error(err)
+			glog.Error(err)
 		}
 
 	}

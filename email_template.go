@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"text/template"
 
-	"github.com/sirupsen/logrus"
+	"github.com/golang/glog"
 )
 
 var funcs = template.FuncMap{
@@ -214,7 +214,7 @@ var tpl = template.Must(template.New("email").Funcs(funcs).Parse(`
 func FormatTemplate(data NotificationModel) string {
 	buf := new(bytes.Buffer)
 	if err := tpl.Execute(buf, data); err != nil {
-		logrus.Error(err)
+		glog.Error(err)
 	}
 	return buf.String()
 }

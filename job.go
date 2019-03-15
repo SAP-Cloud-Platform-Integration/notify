@@ -5,8 +5,7 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/sirupsen/logrus"
-
+	"github.com/golang/glog"
 	"github.com/jasonlvhit/gocron"
 )
 
@@ -28,7 +27,7 @@ func NewJob(t Tenant, e *EmailSender) *MonitorJob {
 	}
 	s.Every(uint64(t.Interval)).Seconds().Do(j.checkError)
 	<-s.Start()
-	logrus.Infof("job for %s tenant started", t.Host)
+	glog.Infof("job for %s tenant started", t.Host)
 	return j
 }
 

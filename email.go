@@ -3,8 +3,7 @@ package main
 import (
 	"strconv"
 
-	"github.com/sirupsen/logrus"
-
+	"github.com/golang/glog"
 	gomail "gopkg.in/gomail.v2"
 )
 
@@ -28,7 +27,7 @@ func (s *EmailSender) SendEmail(payload EmailPayload) {
 	m.SetHeader("Subject", EMAIL_TITLE)
 	m.SetBody("text/html", payload.Content)
 	if err := s.mailer.DialAndSend(m); err != nil {
-		logrus.Error(err)
+		glog.Error(err)
 	}
 }
 
