@@ -9,6 +9,21 @@ import (
 	"github.com/imroc/req"
 )
 
+// CheckAPIAvailable func
+func CheckAPIAvailable(t Tenant) (bool, string) {
+	avaible := false
+	msg := ""
+	link := fmt.Sprintf("https://%s/api/v1/", t.Host)
+	if res, err := req.Head(link); err != nil {
+		avaible = false
+		msg = err.Error()
+	} else if res.Response().StatusCode != 200 {
+		avaible = false
+		msg = fmt.Sprintf("access CPI metadata failed, please check user & privileges for %s", t.Host)
+	}
+	return avaible, msg
+}
+
 // GetFailedInformationFor specific tenant
 func GetFailedInformationFor(t Tenant, from time.Time) *MessageProcessingLog {
 	rt := &MessageProcessingLog{}

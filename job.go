@@ -9,6 +9,7 @@ import (
 	"github.com/jasonlvhit/gocron"
 )
 
+// MonitorJob type
 type MonitorJob struct {
 	jobName string
 	tenant  Tenant
@@ -18,16 +19,19 @@ type MonitorJob struct {
 
 // NewJob and Start
 func NewJob(t Tenant, e *EmailSender) *MonitorJob {
-	s := gocron.NewScheduler()
 	j := &MonitorJob{
 		jobName: fmt.Sprintf("CPI error message check for %s", t.Host),
 		tenant:  t,
 		lastRun: time.Now(),
 		sender:  e,
 	}
-	s.Every(uint64(t.Interval)).Seconds().Do(j.checkError)
-	<-s.Start()
-	log.Printf("job for %s tenant started", t.Host)
+	if checkPassed, msg := CheckAPIAvailable(t); checkPassed {
+		gocron.Every(uint64(t.Interval)).Seconds().Do(j.checkError)
+		log.Printf("setup job for %s tenant", t.Host)
+	} else {
+		log.Printf(msg)
+	}
+
 	return j
 }
 
@@ -56,6 +60,7 @@ func (j *MonitorJob) checkError() {
 
 }
 
+// StartAllJobs func
 func StartAllJobs(config Config) {
 
 	sender := NewSender(config.SMTP)
@@ -63,5 +68,9 @@ func StartAllJobs(config Config) {
 	for _, t := range config.Tenants {
 		NewJob(t, sender)
 	}
+
+	log.Printf("starting jobs")
+
+	<-gocron.Start()
 
 }
