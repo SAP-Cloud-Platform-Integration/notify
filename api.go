@@ -3,7 +3,6 @@ package main
 import (
 	"encoding/base64"
 	"fmt"
-	"log"
 	"time"
 
 	"github.com/imroc/req"
@@ -25,8 +24,10 @@ func CheckAPIAvailable(t Tenant) (bool, string) {
 }
 
 // GetFailedInformationFor specific tenant
-func GetFailedInformationFor(t Tenant, from time.Time) *MessageProcessingLog {
+func GetFailedInformationFor(t Tenant, from time.Time) (msg *MessageProcessingLog, err error) {
+
 	rt := &MessageProcessingLog{}
+
 	res, err := req.Get(
 		fmt.Sprintf("https://%s/api/v1/MessageProcessingLogs", t.Host),
 		req.Header{
@@ -47,23 +48,23 @@ func GetFailedInformationFor(t Tenant, from time.Time) *MessageProcessingLog {
 		},
 	)
 	if err != nil {
-		log.Println(err)
+		return nil, err
 	}
 
 	statusCode := res.Response().StatusCode
 
 	if statusCode != 200 {
-		log.Printf("access cpi data failed, request url: %s, response code: %d", res.Request().URL.String(), statusCode)
+		return nil, fmt.Errorf("access cpi data failed, request url: %s, response code: %d", res.Request().URL.String(), statusCode)
 	}
 
 	if statusCode == 200 {
 
 		if err := res.ToJSON(rt); err != nil {
-			log.Println(err)
+			return nil, err
 		}
 
 	}
 
-	return rt
+	return rt, nil
 
 }

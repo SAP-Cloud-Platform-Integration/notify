@@ -7,6 +7,7 @@ import (
 	gomail "gopkg.in/gomail.v2"
 )
 
+// EMAIL_TITLE constant
 const EMAIL_TITLE = "CPI Error Notification"
 
 // EmailPayload entity
@@ -15,11 +16,13 @@ type EmailPayload struct {
 	Content string
 }
 
+// EmailSender type
 type EmailSender struct {
 	config SMTP
 	mailer *gomail.Dialer
 }
 
+// SendEmail func
 func (s *EmailSender) SendEmail(payload EmailPayload) {
 	m := gomail.NewMessage()
 	m.SetHeader("From", s.config.Username)
@@ -31,6 +34,7 @@ func (s *EmailSender) SendEmail(payload EmailPayload) {
 	}
 }
 
+// NewSender constructor
 func NewSender(config SMTP) *EmailSender {
 	port, _ := strconv.ParseInt(config.Port, 10, 32)
 	rt := &EmailSender{

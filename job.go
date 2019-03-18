@@ -37,25 +37,28 @@ func NewJob(t Tenant, e *EmailSender) *MonitorJob {
 
 func (j *MonitorJob) checkError() {
 	now := time.Now()
-	errs := GetFailedInformationFor(j.tenant, j.lastRun)
+	if msg, err := GetFailedInformationFor(j.tenant, j.lastRun); err == nil {
+		if errCount, _ := strconv.ParseInt(*(msg.D.Count), 10, 64); errCount > 0 {
 
-	if errCount, _ := strconv.ParseInt(*(errs.D.Count), 10, 64); errCount > 0 {
+			notification := NotificationModel{
+				Tenant:  j.tenant,
+				LastRun: formatTime(j.lastRun),
+				Now:     formatTime(now),
+			}
 
-		notification := NotificationModel{
-			Tenant:  j.tenant,
-			LastRun: formatTime(j.lastRun),
-			Now:     formatTime(now),
+			notification.Artifacts = GroupResultToArtifacts(msg.D.Results)
+
+			for _, contact := range j.tenant.Contact {
+				notification.ContactName = contact.Name
+				j.sender.SendEmail(EmailPayload{
+					To:      []string{contact.Email},
+					Content: FormatTemplate(notification),
+				})
+			}
 		}
-
-		notification.Artifacts = GroupResultToArtifacts(errs.D.Results)
-
-		for _, contact := range j.tenant.Contact {
-			notification.ContactName = contact.Name
-			j.sender.SendEmail(EmailPayload{
-				To:      []string{contact.Email},
-				Content: FormatTemplate(notification),
-			})
-		}
+	} else {
+		log.Println(err)
+		log.Printf("Get infromation from %s failed, please check the tenant status", j.tenant.Host)
 	}
 
 }
