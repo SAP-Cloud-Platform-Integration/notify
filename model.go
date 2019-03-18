@@ -8,8 +8,7 @@ package main
 import (
 	"encoding/json"
 	"io/ioutil"
-
-	"github.com/golang/glog"
+	"log"
 )
 
 func UnmarshalConfig(data []byte) (Config, error) {
@@ -54,11 +53,11 @@ func ParseConfigFromPath(path string) *Config {
 
 	if content, err := ioutil.ReadFile(path); err == nil {
 		if err = json.Unmarshal(content, rt); err != nil {
-			glog.Error(err)
+			log.Println(err)
 			panic(err)
 		}
 	} else {
-		glog.Error(err)
+		log.Println(err)
 		panic(err)
 	}
 

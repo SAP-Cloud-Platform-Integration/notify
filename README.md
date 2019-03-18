@@ -19,9 +19,9 @@ Therefore, the project hopes to provide a way to send notifications when an erro
 - [x] setup CI
 - [x] impl odata api invocation
 - [x] parse config json
-- [ ] define the `Dcokerfile`
-- [ ] impl the periodic logic (schedule)
+- [x] impl the periodic logic (schedule)
 - [x] impl email template
+- [ ] define the `Dockerfile` for deployement
 - [ ] user document
 - [ ] unit tests
 

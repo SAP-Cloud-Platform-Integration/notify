@@ -19,6 +19,7 @@ var AppUsage = "Send email notify when any integration messages failed"
 
 // main entry
 func main() {
+
 	app := cli.NewApp()
 	app.Version = Version
 	app.Name = AppName
@@ -30,6 +31,7 @@ func main() {
 			Name: "start",
 			Action: func(c *cli.Context) error {
 				configPath := c.GlobalString("config")
+				log.Printf("start notify with config %s", configPath)
 				config := ParseConfigFromPath(configPath)
 				StartAllJobs(*config)
 				return nil
@@ -39,7 +41,7 @@ func main() {
 
 	app.Flags = []cli.Flag{
 		cli.StringFlag{
-			Name:  "config, u",
+			Name:  "config, c",
 			Value: "notify.json",
 			Usage: "config file path",
 		},

@@ -2,9 +2,8 @@ package main
 
 import (
 	"bytes"
+	"log"
 	"text/template"
-
-	"github.com/golang/glog"
 )
 
 var funcs = template.FuncMap{
@@ -214,7 +213,7 @@ var tpl = template.Must(template.New("email").Funcs(funcs).Parse(`
 func FormatTemplate(data NotificationModel) string {
 	buf := new(bytes.Buffer)
 	if err := tpl.Execute(buf, data); err != nil {
-		glog.Error(err)
+		log.Println(err)
 	}
 	return buf.String()
 }

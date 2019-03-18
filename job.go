@@ -2,10 +2,10 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"strconv"
 	"time"
 
-	"github.com/golang/glog"
 	"github.com/jasonlvhit/gocron"
 )
 
@@ -27,7 +27,7 @@ func NewJob(t Tenant, e *EmailSender) *MonitorJob {
 	}
 	s.Every(uint64(t.Interval)).Seconds().Do(j.checkError)
 	<-s.Start()
-	glog.Infof("job for %s tenant started", t.Host)
+	log.Printf("job for %s tenant started", t.Host)
 	return j
 }
 

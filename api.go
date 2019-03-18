@@ -3,9 +3,8 @@ package main
 import (
 	"encoding/base64"
 	"fmt"
+	"log"
 	"time"
-
-	"github.com/golang/glog"
 
 	"github.com/imroc/req"
 )
@@ -33,19 +32,19 @@ func GetFailedInformationFor(t Tenant, from time.Time) *MessageProcessingLog {
 		},
 	)
 	if err != nil {
-		glog.Error(err)
+		log.Println(err)
 	}
 
 	statusCode := res.Response().StatusCode
 
 	if statusCode != 200 {
-		glog.Errorf("access cpi data failed, request url: %s, response code: %d", res.Request().URL.String(), statusCode)
+		log.Printf("access cpi data failed, request url: %s, response code: %d", res.Request().URL.String(), statusCode)
 	}
 
 	if statusCode == 200 {
 
 		if err := res.ToJSON(rt); err != nil {
-			glog.Error(err)
+			log.Println(err)
 		}
 
 	}
