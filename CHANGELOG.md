@@ -1,4 +1,16 @@
 
+<a name="v0.9.15"></a>
+## [v0.9.15](https://github.com/SAP-Cloud-Platform-Integration/notify/compare/v0.9.14...v0.9.15) (2019-03-18)
+
+### Bug Fixes
+
+* dockerfile git lost
+
+### Common
+
+* **release:** new version
+
+
 <a name="v0.9.14"></a>
 ## [v0.9.14](https://github.com/SAP-Cloud-Platform-Integration/notify/compare/v0.9.13...v0.9.14) (2019-03-18)
 
