@@ -19,7 +19,7 @@ func TestGetFailedInformationFor(t *testing.T) {
 	}{}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got := GetFailedInformationFor(tt.args.t, tt.args.from)
+			got, _ := GetFailedInformationFor(tt.args.t, tt.args.from)
 			assert.Equal(t, len(got.D.Results), 100)
 		})
 	}
