@@ -1,4 +1,25 @@
 
+<a name="v0.9.11"></a>
+## [v0.9.11](https://github.com/SAP-Cloud-Platform-Integration/notify/compare/v0.9.10...v0.9.11) (2019-03-18)
+
+### Bug Fixes
+
+* test cases
+* error messages
+* log library
+
+### Common
+
+* **release:** new version
+
+### Features
+
+* config CI build image
+* update docker file
+* provide docker file
+* error process
+
+
 <a name="v0.9.10"></a>
 ## [v0.9.10](https://github.com/SAP-Cloud-Platform-Integration/notify/compare/v0.9.9...v0.9.10) (2019-03-15)
 
