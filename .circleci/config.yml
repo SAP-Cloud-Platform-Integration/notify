@@ -54,6 +54,7 @@ jobs:
       - image: docker:18.06.3-ce-git
     steps:
       - checkout
+      - setup_remote_docker
       - run: docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
       - run: docker build -t theosun/cpi-notify:${CIRCLE_TAG} .
       - run: docker push theosun/cpi-notify:${CIRCLE_TAG}
