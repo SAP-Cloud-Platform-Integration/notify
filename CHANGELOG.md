@@ -1,4 +1,16 @@
 
+<a name="v0.9.12"></a>
+## [v0.9.12](https://github.com/SAP-Cloud-Platform-Integration/notify/compare/v0.9.11...v0.9.12) (2019-03-18)
+
+### Bug Fixes
+
+* build script
+
+### Common
+
+* **release:** new version
+
+
 <a name="v0.9.11"></a>
 ## [v0.9.11](https://github.com/SAP-Cloud-Platform-Integration/notify/compare/v0.9.10...v0.9.11) (2019-03-18)
 
