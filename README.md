@@ -21,7 +21,7 @@ Therefore, the project hopes to provide a way to send notifications when an erro
 - [x] parse config json
 - [x] impl the periodic logic (schedule)
 - [x] impl email template
-- [ ] define the `Dockerfile` for deployement
+- [x] define the `Dockerfile` for deployement
 - [ ] user document
 - [ ] unit tests
 
