@@ -15,6 +15,51 @@ Sometimes, error messages are so important that administrators want to get them 
 
 Therefore, the project hopes to provide a way to send notifications when an error occurs.
 
+## Run
+
+You need a smtp mail server & some CPI infromation.
+
+As you see, you can add many tenants to monitor.
+
+The `interval` unit is `second`.
+
+Following is a sample `notify.json` configuration file.
+
+```json
+{
+  "smtp": {
+    "username": "username",
+    "password": "password",
+    "server": "1.2.3.4",
+    "port": "465"
+  },
+  "tenants": [
+    {
+      "interval": 60,
+      "name": "sample",
+      "host": "mock-tmn.hci.cn1.hana.ondemand.com",
+      "username": "username",
+      "password": "password",
+      "contact": [
+        {
+          "name": "Theo Sun",
+          "email": "theo.sun@outlook.com"
+        }
+      ]
+    }
+  ]
+}
+```
+
+then run 
+
+```bash
+./notify start
+2019/03/27 13:07:19 start notify with config notify.json
+2019/03/27 13:07:21 setup job for xxxxxxx-tmn.hci.eu1.hana.ondemand.com tenant
+2019/03/27 13:07:21 starting jobs
+```
+
 ## Current status
 
 - [x] setup proejct
@@ -24,6 +69,7 @@ Therefore, the project hopes to provide a way to send notifications when an erro
 - [x] impl the periodic logic (schedule)
 - [x] impl email template
 - [x] define the `Dockerfile` for deployement
+- [ ] daemon support
 - [ ] user document
 - [ ] unit tests
 
@@ -44,6 +90,6 @@ This application will periodic fetch CPI processing log (based on the [SAP CPI O
 
 The CPI developer could define the `exception subprocess`, and invoke rest API to send email (or use the SMTP adapter).
 
-## Email template
+## Email notification example
 
-![](https://res.cloudinary.com/digf90pwi/image/upload/v1552638002/2019-03-15_16-19-05_bdxheh.png)
+![](https://res.cloudinary.com/digf90pwi/image/upload/v1553665838/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20190327133545_a5mj0f.png)
