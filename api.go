@@ -10,10 +10,18 @@ import (
 
 // CheckAPIAvailable func
 func CheckAPIAvailable(t Tenant) (bool, string) {
-	avaible := false
+	avaible := true
 	msg := ""
 	link := fmt.Sprintf("https://%s/api/v1/", t.Host)
-	if res, err := req.Head(link); err != nil {
+	if res, err := req.Head(
+		link,
+		req.Header{
+			"Authorization": fmt.Sprintf(
+				"Basic %s",
+				base64.StdEncoding.EncodeToString([]byte(fmt.Sprintf("%s:%s", t.Username, t.Password))),
+			),
+		},
+	); err != nil {
 		avaible = false
 		msg = err.Error()
 	} else if res.Response().StatusCode != 200 {

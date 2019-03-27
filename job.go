@@ -56,6 +56,7 @@ func (j *MonitorJob) checkError() {
 				})
 			}
 		}
+		j.lastRun = now
 	} else {
 		log.Println(err)
 		log.Printf("Get infromation from %s failed, please check the tenant status", j.tenant.Host)

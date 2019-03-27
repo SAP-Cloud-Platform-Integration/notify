@@ -98,7 +98,7 @@ var tpl = template.Must(template.New("email").Funcs(funcs).Parse(`
     <!-- 100% background wrapper (grey background) -->
     <table border="0" width="100%" height="100%" cellpadding="0" cellspacing="0" bgcolor="#F0F0F0">
         <tr>
-            <td align="center" valign="top" bgcolor="#F0F0F0" style="background-color: #F0F0F0;">
+            <td align="center" valign="top" bgcolor="#F0F0F0" style="background-color: #ffffff;">
 
                 <br>
 
