@@ -27,6 +27,7 @@ Following is a sample `notify.json` configuration file.
 
 ```json
 {
+  "$schema": "https://raw.githubusercontent.com/SAP-Cloud-Platform-Integration/notify/master/config_schema.json",
   "smtp": {
     "username": "username",
     "password": "password",
