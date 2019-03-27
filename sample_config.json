@@ -1,4 +1,5 @@
 {
+  "$schema": "./config_schema.json#",
   "smtp": {
     "username": "username",
     "password": "password",

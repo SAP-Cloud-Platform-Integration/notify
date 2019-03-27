@@ -1,0 +1,116 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$ref": "#/definitions/NotifyConfiguration",
+  "definitions": {
+    "NotifyConfiguration": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "$schema": {
+          "type": "string"
+        },
+        "smtp": {
+          "$ref": "#/definitions/SMTP",
+          "description": "SMTP mail configuration"
+        },
+        "tenants": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Tenant"
+          },
+          "description": "CPI tenants"
+        }
+      },
+      "required": [
+        "smtp",
+        "tenants"
+      ],
+      "title": "NotifyConfiguration"
+    },
+    "SMTP": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "username": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "server": {
+          "type": "string",
+          "description": "SMTP server hostname"
+        },
+        "port": {
+          "type": "string",
+          "format": "integer"
+        }
+      },
+      "required": [
+        "password",
+        "port",
+        "server",
+        "username"
+      ],
+      "title": "SMTP"
+    },
+    "Tenant": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "interval": {
+          "type": "integer",
+          "description": "check interval, unit is second"
+        },
+        "name": {
+          "type": "string",
+          "description": "CPI tenant name"
+        },
+        "host": {
+          "type": "string",
+          "description": "CPI tenant hostname, tmn node"
+        },
+        "username": {
+          "type": "string",
+          "description": "SAP ID"
+        },
+        "password": {
+          "type": "string",
+          "description": "SAP ID password"
+        },
+        "contact": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Contact"
+          }
+        }
+      },
+      "required": [
+        "contact",
+        "host",
+        "interval",
+        "name",
+        "password",
+        "username"
+      ],
+      "title": "Tenant"
+    },
+    "Contact": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "email",
+        "name"
+      ],
+      "title": "Contact"
+    }
+  }
+}
