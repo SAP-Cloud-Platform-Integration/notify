@@ -1,4 +1,38 @@
 
+<a name="v0.9.26"></a>
+## [v0.9.26](https://github.com/SAP-Cloud-Platform-Integration/notify/compare/v0.9.25...v0.9.26) (2019-04-01)
+
+
+<a name="v0.9.25"></a>
+## [v0.9.25](https://github.com/SAP-Cloud-Platform-Integration/notify/compare/v0.9.24...v0.9.25) (2019-04-01)
+
+### Common
+
+* **script:** update
+
+
+<a name="v0.9.24"></a>
+## [v0.9.24](https://github.com/SAP-Cloud-Platform-Integration/notify/compare/v0.9.22...v0.9.24) (2019-04-01)
+
+### Common
+
+* **script:** update
+
+
+<a name="v0.9.22"></a>
+## [v0.9.22](https://github.com/SAP-Cloud-Platform-Integration/notify/compare/v0.9.20...v0.9.22) (2019-04-01)
+
+### Common
+
+* document update
+* schema provided
+* **release:** new version
+
+### Features
+
+* with env configuration
+
+
 <a name="v0.9.20"></a>
 ## [v0.9.20](https://github.com/SAP-Cloud-Platform-Integration/notify/compare/v0.9.15...v0.9.20) (2019-03-27)
 
