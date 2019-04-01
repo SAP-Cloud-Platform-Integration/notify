@@ -5,8 +5,8 @@ if ! [ -x "$(command -v go)" ]; then
   exit 1
 fi
 
-if ! [ -x "$(command -v go)" ]; then
-  echo 'install git chglog...'
+if ! [ -x "$(command -v git-chglog)" ]; then
+  echo "install git chglog..."
   go get -u github.com/git-chglog/git-chglog/cmd/git-chglog
 fi
 
