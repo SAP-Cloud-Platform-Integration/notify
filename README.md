@@ -5,7 +5,7 @@
 [![](https://images.microbadger.com/badges/image/theosun/cpi-notify.svg)](https://microbadger.com/images/theosun/cpi-notify "Get your own image badge on microbadger.com")
 [![](https://images.microbadger.com/badges/version/theosun/cpi-notify.svg)](https://microbadger.com/images/theosun/cpi-notify "Get your own version badge on microbadger.com")
 
-Send email notify when any integration messages failed
+Send email notifications when any integration messages failed
 
 ## Project target
 
