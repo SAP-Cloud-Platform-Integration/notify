@@ -45,7 +45,7 @@ func (j *MonitorJob) checkError() {
 		// if errors found
 		if errCount, _ := strconv.ParseInt(*(msg.D.Count), 10, 64); errCount > 0 {
 
-			log.Printf("founc %d errors in %s tenant", errCount, j.tenant.Host)
+			log.Printf("found %d errors in %s tenant", errCount, j.tenant.Host)
 
 			notification := NotificationModel{
 				Tenant:  j.tenant,

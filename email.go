@@ -28,7 +28,12 @@ func (s *EmailSender) SendEmail(payload EmailPayload) {
 	m.SetHeader("From", s.config.Username)
 	m.SetHeader("To", payload.To...)
 	m.SetHeader("Subject", EMAIL_TITLE)
+	// set high priority
+	m.SetHeader("X-Priority", "1 (Highest)")
+	m.SetHeader("X-MSMail-Priority", "High")
+	m.SetHeader("Importance", "High")
 	m.SetBody("text/html", payload.Content)
+	// set mail
 	if err := s.mailer.DialAndSend(m); err != nil {
 		log.Println(err)
 	}
