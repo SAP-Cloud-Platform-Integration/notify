@@ -61,9 +61,26 @@ then run
 2019/03/27 13:07:21 starting jobs
 ```
 
-## deploy with docker
+## Deploy with docker
 
-TBD
+just run 
+
+```bash
+docker run -d theosun/cpi-notify
+```
+
+required env variables: 
+
+* SMTP_SERVER	
+* SMTP_PORT	
+* SMTP_USER	
+* SMTP_PASSWORD	
+* CHECK_INTERVAL
+* CPI_HOST
+* CPI_USER	
+* CPI_PASSWORD	
+* CONTACT_NAME	
+* CONTACT_EMAIL
 
 ## Current status
 
@@ -74,9 +91,9 @@ TBD
 - [x] impl the periodic logic (schedule)
 - [x] impl email template
 - [x] define the `Dockerfile` for deployement
-- [ ] daemon support
-- [ ] user document
-- [ ] unit tests
+- [x] daemon support (by docker)
+- [x] user document
+- [x] unit tests (private)
 
 ## Hign level design
 
