@@ -36,45 +36,49 @@ func NewJob(t Tenant, e *EmailSender) *MonitorJob {
 }
 
 func (j *MonitorJob) checkError() {
-	now := time.Now()
-	log.Printf("checking error for %s tenant", j.tenant.Host)
 
-	// retrive error messages
-	if msg, err := GetFailedInformationFor(j.tenant, j.lastRun); err == nil {
+	// async run
+	go func() {
 
-		// if errors found
-		if errCount, _ := strconv.ParseInt(*(msg.D.Count), 10, 64); errCount > 0 {
+		now := time.Now()
+		log.Printf("checking error for %s tenant", j.tenant.Host)
 
-			log.Printf("found %d errors in %s tenant", errCount, j.tenant.Host)
+		// retrive error messages
+		if msg, err := GetFailedInformationFor(j.tenant, j.lastRun); err == nil {
 
-			notification := NotificationModel{
-				Tenant:  j.tenant,
-				LastRun: formatTime(j.lastRun),
-				Now:     formatTime(now),
+			// if errors found
+			if errCount, _ := strconv.ParseInt(*(msg.D.Count), 10, 64); errCount > 0 {
+
+				log.Printf("found %d errors in %s tenant", errCount, j.tenant.Host)
+
+				notification := NotificationModel{
+					Tenant:  j.tenant,
+					LastRun: formatTime(j.lastRun),
+					Now:     formatTime(now),
+				}
+
+				notification.Artifacts = GroupResultToArtifacts(msg.D.Results)
+
+				// send to each contact
+				for _, contact := range j.tenant.Contact {
+					// replace contact name
+					notification.ContactName = contact.Name
+					j.sender.SendEmail(EmailPayload{
+						To:      []string{contact.Email},
+						Content: FormatTemplate(notification),
+					})
+				}
+
 			}
-
-			notification.Artifacts = GroupResultToArtifacts(msg.D.Results)
-
-			for _, contact := range j.tenant.Contact {
-				notification.ContactName = contact.Name
-				j.sender.SendEmail(EmailPayload{
-					To:      []string{contact.Email},
-					Content: FormatTemplate(notification),
-				})
-			}
+			j.lastRun = now
 
 		} else {
 
-			log.Printf("no errors found in %s tenant", j.tenant.Host)
+			log.Println(err)
+			log.Printf("Get infromation from %s failed, please check the tenant status", j.tenant.Host)
 
 		}
-		j.lastRun = now
-	} else {
-
-		log.Println(err)
-		log.Printf("Get infromation from %s failed, please check the tenant status", j.tenant.Host)
-
-	}
+	}()
 
 }
 
