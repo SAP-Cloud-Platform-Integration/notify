@@ -68,9 +68,10 @@ func main() {
 
 	app.Flags = []cli.Flag{
 		cli.StringFlag{
-			Name:  "config, c",
-			Value: "notify.json",
-			Usage: "config file path",
+			Name:   "config, c",
+			Value:  "notify.json",
+			EnvVar: "CONFIG_PATH",
+			Usage:  "config file path",
 		},
 		cli.BoolFlag{
 			Name:   "env",
