@@ -57,6 +57,7 @@ jobs:
       - setup_remote_docker
       - run: docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
       - run: docker build -t theosun/cpi-notify:${CIRCLE_TAG} .
+      - run: docker tag theosun/cpi-notify:${CIRCLE_TAG} theosun/cpi-notify:latest
       - run: docker push theosun/cpi-notify:${CIRCLE_TAG}
 
 

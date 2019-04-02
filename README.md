@@ -61,6 +61,10 @@ then run
 2019/03/27 13:07:21 starting jobs
 ```
 
+## deploy with docker
+
+TBD
+
 ## Current status
 
 - [x] setup proejct
