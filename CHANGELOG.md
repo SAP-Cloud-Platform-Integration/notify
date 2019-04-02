@@ -1,4 +1,13 @@
 
+<a name="v0.9.27"></a>
+## [v0.9.27](https://github.com/SAP-Cloud-Platform-Integration/notify/compare/v0.9.26...v0.9.27) (2019-04-02)
+
+### Common
+
+* **flag:** update
+* **release:** new version
+
+
 <a name="v0.9.26"></a>
 ## [v0.9.26](https://github.com/SAP-Cloud-Platform-Integration/notify/compare/v0.9.25...v0.9.26) (2019-04-01)
 
