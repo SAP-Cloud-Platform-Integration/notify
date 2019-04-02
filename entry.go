@@ -73,8 +73,9 @@ func main() {
 			Usage: "config file path",
 		},
 		cli.BoolFlag{
-			Name:  "env",
-			Usage: "use env configuration",
+			Name:   "env",
+			EnvVar: "ENV_CONFIG",
+			Usage:  "use env configuration",
 		},
 		cli.StringFlag{
 			Name:   "smtpserver",
