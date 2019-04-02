@@ -87,6 +87,10 @@ func StartAllJobs(config Config) {
 		NewJob(t, sender)
 	}
 
+	// run all job once at start
+	gocron.RunAll()
+
+	// start cron jobs
 	<-gocron.Start()
 
 }
