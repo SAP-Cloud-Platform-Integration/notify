@@ -114,4 +114,4 @@ The CPI developer could define the `exception subprocess`, and invoke rest API t
 
 ## Email notification example
 
-![](https://res.cloudinary.com/digf90pwi/image/upload/v1553665838/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20190327133545_a5mj0f.png)
+![](https://res.cloudinary.com/digf90pwi/image/upload/v1554269455/2019-04-03_13-28-12_g8zmed.png)
