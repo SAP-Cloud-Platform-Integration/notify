@@ -1,4 +1,18 @@
 
+<a name="v1.0.1"></a>
+## [v1.0.1](https://github.com/SAP-Cloud-Platform-Integration/notify/compare/v1.0.0...v1.0.1) (2019-04-03)
+
+### Common
+
+* **doc:** update
+* **refactor:** code
+* **release:** new version
+
+### Features
+
+* **timeout:** support timeout, reformat url
+
+
 <a name="v1.0.0"></a>
 ## [v1.0.0](https://github.com/SAP-Cloud-Platform-Integration/notify/compare/v0.9.35...v1.0.0) (2019-04-02)
 
