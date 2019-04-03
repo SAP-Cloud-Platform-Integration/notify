@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/base64"
 	"fmt"
+	"net/url"
 	"time"
 
 	"github.com/imroc/req"
@@ -34,6 +35,9 @@ func CheckAPIAvailable(t Tenant) (bool, string) {
 // GetFailedInformationFor specific tenant
 func GetFailedInformationFor(t Tenant, from time.Time) (msg *MessageProcessingLog, err error) {
 
+	// set timeout
+	req.SetTimeout(time.Duration(t.Interval) * time.Second)
+
 	rt := &MessageProcessingLog{}
 
 	res, err := req.Get(
@@ -62,7 +66,8 @@ func GetFailedInformationFor(t Tenant, from time.Time) (msg *MessageProcessingLo
 	statusCode := res.Response().StatusCode
 
 	if statusCode != 200 {
-		return nil, fmt.Errorf("access cpi data failed, request url: %s, response code: %d", res.Request().URL.String(), statusCode)
+		u, _ := url.QueryUnescape(res.Request().URL.String())
+		return nil, fmt.Errorf("access cpi data failed, request url: %s, response code: %d", u, statusCode)
 	}
 
 	if statusCode == 200 {
