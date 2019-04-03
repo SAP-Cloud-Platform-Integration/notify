@@ -9,6 +9,8 @@ import (
 	"encoding/json"
 	"io/ioutil"
 	"log"
+
+	"github.com/urfave/cli"
 )
 
 func UnmarshalConfig(data []byte) (Config, error) {
@@ -62,4 +64,30 @@ func ParseConfigFromPath(path string) *Config {
 	}
 
 	return rt
+}
+
+func ParseConfigFromEnv(c *cli.Context) *Config {
+	return &Config{
+		SMTP{
+			Server:   c.GlobalString("smtpserver"),
+			Port:     c.GlobalString("smtpport"),
+			Username: c.GlobalString("smtpuser"),
+			Password: c.GlobalString("smtppass"),
+		},
+		[]Tenant{
+			Tenant{
+				Interval: c.GlobalInt64("interval"),
+				Name:     c.GlobalString("cpiname"),
+				Host:     c.GlobalString("cpihost"),
+				Username: c.GlobalString("cpiuser"),
+				Password: c.GlobalString("cpipassword"),
+				Contact: []Contact{
+					Contact{
+						Name:  c.GlobalString("contact"),
+						Email: c.GlobalString("email"),
+					},
+				},
+			},
+		},
+	}
 }
