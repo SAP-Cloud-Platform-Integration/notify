@@ -4,6 +4,8 @@ import (
 	"log"
 	"os"
 
+	"github.com/getsentry/raven-go"
+
 	"github.com/urfave/cli"
 )
 
@@ -30,6 +32,12 @@ func main() {
 		cli.Command{
 			Name: "start",
 			Action: func(c *cli.Context) error {
+				ravenDSN := c.GlobalString("ravendsn")
+				if ravenDSN != "" {
+					if err := raven.SetDSN(ravenDSN); err != nil {
+						log.Println(err)
+					}
+				}
 				if c.GlobalBool("env") {
 					log.Printf("start notify with config from env")
 					config := ParseConfigFromEnv(c)

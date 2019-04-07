@@ -9,6 +9,11 @@ var flags = []cli.Flag{
 		EnvVar: "CONFIG_PATH",
 		Usage:  "config file path",
 	},
+	cli.StringFlag{
+		Name:   "ravendsn",
+		EnvVar: "RAVEN_DSN",
+		Usage:  "Sentry (Raven) Logger DSN",
+	},
 	cli.BoolFlag{
 		Name:   "env",
 		EnvVar: "ENV_CONFIG",

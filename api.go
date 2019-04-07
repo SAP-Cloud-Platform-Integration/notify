@@ -32,6 +32,30 @@ func CheckAPIAvailable(t Tenant) (bool, string) {
 	return avaible, msg
 }
 
+// GetErrorLogFor msg
+func GetErrorLogFor(t Tenant, m Result) string {
+	rt := ""
+	res, _ := req.Get(
+		fmt.Sprintf("%s/$value", m.ErrorInformation.Deferred.URI),
+		req.Header{
+			"Authorization": fmt.Sprintf(
+				"Basic %s",
+				base64.StdEncoding.EncodeToString([]byte(fmt.Sprintf("%s:%s", t.Username, t.Password))),
+			),
+		},
+	)
+	statusCode := res.Response().StatusCode
+
+	switch statusCode {
+	case 200:
+		rt, _ = res.ToString()
+	default:
+		rt = "Error log not found."
+	}
+
+	return rt
+}
+
 // GetFailedInformationFor specific tenant
 func GetFailedInformationFor(t Tenant, from time.Time) (msg *MessageProcessingLog, err error) {
 

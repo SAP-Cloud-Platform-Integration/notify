@@ -69,6 +69,11 @@ func (j *MonitorJob) checkError() {
 					})
 				}
 
+				// capture messages to sentry
+				go func() {
+					CaptureMessages(j.tenant, msg.D.Results)
+				}()
+
 			}
 			j.lastRun = now
 
