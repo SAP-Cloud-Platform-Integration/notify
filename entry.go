@@ -34,6 +34,7 @@ func main() {
 			Action: func(c *cli.Context) error {
 				ravenDSN := c.GlobalString("ravendsn")
 				if ravenDSN != "" {
+					log.Printf("setup sentry(raven) log with DSN: %s", ravenDSN)
 					if err := raven.SetDSN(ravenDSN); err != nil {
 						log.Println(err)
 					}

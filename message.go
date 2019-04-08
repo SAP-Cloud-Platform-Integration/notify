@@ -36,10 +36,11 @@ func CaptureMessages(tenant Tenant, msgs []Result) {
 		evDate := ParseODataTimeStamp(*m.LogEnd)
 		raven.Capture(
 			&raven.Packet{
-				Message:    errMsg,
-				Level:      raven.ERROR, // error log
-				Timestamp:  raven.Timestamp(evDate),
-				ServerName: tenant,
+				Message:     errMsg,
+				Level:       raven.ERROR, // error log
+				Timestamp:   raven.Timestamp(evDate),
+				ServerName:  tenant,
+				Environment: tenant,
 				Tags: []raven.Tag{
 					raven.Tag{
 						Key:   "Artifact",
