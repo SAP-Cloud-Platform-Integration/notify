@@ -81,6 +81,7 @@ required env variables:
 * CPI_PASSWORD	
 * CONTACT_NAME	
 * CONTACT_EMAIL
+* RAVEN_DSN - used for sentry integration
 
 ## Current status
 
