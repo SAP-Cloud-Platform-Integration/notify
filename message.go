@@ -1,6 +1,8 @@
 package main
 
 import (
+	"strings"
+
 	"github.com/getsentry/raven-go"
 )
 
@@ -30,7 +32,23 @@ func GroupResultToArtifacts(messages []Result) []Artifact {
 func CaptureMessages(tenant Tenant, msgs []Result) {
 
 	for _, m := range msgs {
-		errMsg := GetErrorLogFor(tenant, m)
+		errMsg := ""
+		errException := ""
+		originErrMsg := GetErrorLogFor(tenant, m)
+		originErrMsgLines := strings.Split(originErrMsg, "\n")
+
+		if len(originErrMsgLines) == 3 {
+			parts := strings.SplitN(originErrMsgLines[0], ":", 2)
+			if len(parts) == 2 {
+				errException = parts[0]
+				errMsg = parts[1]
+			}
+		}
+
+		if errMsg == "" {
+			errMsg = originErrMsg
+		}
+
 		tenant := string(tenant.Host)
 		artifact := string(m.IntegrationArtifact.Name)
 		evDate := ParseODataTimeStamp(*m.LogEnd)
@@ -42,6 +60,10 @@ func CaptureMessages(tenant Tenant, msgs []Result) {
 				ServerName:  tenant,
 				Environment: tenant,
 				Tags: []raven.Tag{
+					raven.Tag{
+						key:   "Exception",
+						value: errException,
+					},
 					raven.Tag{
 						Key:   "Artifact",
 						Value: artifact,
