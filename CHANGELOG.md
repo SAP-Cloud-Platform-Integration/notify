@@ -1,4 +1,16 @@
 
+<a name="v1.1.4"></a>
+## [v1.1.4](https://github.com/SAP-Cloud-Platform-Integration/notify/compare/v1.1.3...v1.1.4) (2019-04-19)
+
+### Common
+
+* **release:** new version
+
+### Features
+
+* error message parse
+
+
 <a name="v1.1.3"></a>
 ## [v1.1.3](https://github.com/SAP-Cloud-Platform-Integration/notify/compare/v1.1.0...v1.1.3) (2019-04-08)
 
@@ -89,7 +101,7 @@
 
 
 <a name="v0.9.27"></a>
-## [v0.9.27](https://github.com/SAP-Cloud-Platform-Integration/notify/compare/v0.9.26...v0.9.27) (2019-04-02)
+## [v0.9.27](https://github.com/SAP-Cloud-Platform-Integration/notify/compare/v0.9.25...v0.9.27) (2019-04-02)
 
 ### Common
 
@@ -97,12 +109,12 @@
 * **release:** new version
 
 
-<a name="v0.9.26"></a>
-## [v0.9.26](https://github.com/SAP-Cloud-Platform-Integration/notify/compare/v0.9.25...v0.9.26) (2019-04-01)
-
-
 <a name="v0.9.25"></a>
-## [v0.9.25](https://github.com/SAP-Cloud-Platform-Integration/notify/compare/v0.9.24...v0.9.25) (2019-04-01)
+## [v0.9.25](https://github.com/SAP-Cloud-Platform-Integration/notify/compare/v0.9.26...v0.9.25) (2019-04-01)
+
+
+<a name="v0.9.26"></a>
+## [v0.9.26](https://github.com/SAP-Cloud-Platform-Integration/notify/compare/v0.9.24...v0.9.26) (2019-04-01)
 
 ### Common
 
