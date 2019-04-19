@@ -61,8 +61,8 @@ func CaptureMessages(tenant Tenant, msgs []Result) {
 				Environment: tenant,
 				Tags: []raven.Tag{
 					raven.Tag{
-						key:   "Exception",
-						value: errException,
+						Key:   "Exception",
+						Value: errException,
 					},
 					raven.Tag{
 						Key:   "Artifact",
