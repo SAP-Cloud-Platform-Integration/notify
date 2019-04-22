@@ -1,4 +1,16 @@
 
+<a name="v1.2.0"></a>
+## [v1.2.0](https://github.com/SAP-Cloud-Platform-Integration/notify/compare/v1.1.5...v1.2.0) (2019-04-22)
+
+### Common
+
+* **release:** new version
+
+### Features
+
+* raven support & doc update
+
+
 <a name="v1.1.5"></a>
 ## [v1.1.5](https://github.com/SAP-Cloud-Platform-Integration/notify/compare/v1.1.4...v1.1.5) (2019-04-19)
 
