@@ -5,7 +5,7 @@
 [![](https://images.microbadger.com/badges/image/theosun/cpi-notify.svg)](https://microbadger.com/images/theosun/cpi-notify "Get your own image badge on microbadger.com")
 [![](https://images.microbadger.com/badges/version/theosun/cpi-notify.svg)](https://microbadger.com/images/theosun/cpi-notify "Get your own version badge on microbadger.com")
 
-Send email notifications when any integration messages failed
+Send notifications when any integration messages failed
 
 ## Project target
 
@@ -15,72 +15,33 @@ Sometimes, error messages are so important that administrators want to get them 
 
 Therefore, the project hopes to provide a way to send notifications when an error occurs.
 
-## Run
-
-You need a smtp mail server & some CPI infromation.
-
-As you see, you can add many tenants to monitor.
-
-The `interval` unit is `second`.
-
-Following is a sample `notify.json` configuration file.
-
-```json
-{
-  "$schema": "https://raw.githubusercontent.com/SAP-Cloud-Platform-Integration/notify/master/config_schema.json",
-  "smtp": {
-    "username": "username",
-    "password": "password",
-    "server": "1.2.3.4",
-    "port": "465"
-  },
-  "tenants": [
-    {
-      "interval": 60,
-      "name": "sample",
-      "host": "mock-tmn.hci.cn1.hana.ondemand.com",
-      "username": "username",
-      "password": "password",
-      "contact": [
-        {
-          "name": "Theo Sun",
-          "email": "theo.sun@outlook.com"
-        }
-      ]
-    }
-  ]
-}
-```
-
-then run 
-
-```bash
-./notify start
-2019/03/27 13:07:19 start notify with config notify.json
-2019/03/27 13:07:21 setup job for xxxxxxx-tmn.hci.eu1.hana.ondemand.com tenant
-2019/03/27 13:07:21 starting jobs
-```
-
 ## Deploy with docker
 
-just run 
+Tranditional deploy approach is deprecated, only support docker deployment now.
+
+With docker just run with: 
 
 ```bash
 docker run -d theosun/cpi-notify
 ```
 
-required env variables: 
+**Required** env variables: 
 
-* SMTP_SERVER	
-* SMTP_PORT	
-* SMTP_USER	
-* SMTP_PASSWORD	
-* CHECK_INTERVAL
 * CPI_HOST
 * CPI_USER	
 * CPI_PASSWORD	
+
+**Optional** env variables:
+
+* CHECK_INTERVAL - default `60` seconds
+
+* SMTP_SERVER	- used for email integration
+* SMTP_PORT	
+* SMTP_USER	
+* SMTP_PASSWORD	
 * CONTACT_NAME	
 * CONTACT_EMAIL
+
 * RAVEN_DSN - used for sentry integration
 
 ## Current status
@@ -102,17 +63,15 @@ This application will periodic fetch CPI processing log (based on the [SAP CPI O
 
 ### Graphical description
 
-![schematic diagram](https://assets.processon.com/chart_image/5c873b53e4b0ab74ecd43269.png)
+![schematic diagram](https://res.cloudinary.com/digf90pwi/image/upload/v1555907777/CPI-notify_qshvgp.png)
 
 ## Failed codition
 
 * timeout/connection reject(maybe the CPI tenant down)
 * some integration messages failed(maybe the external/internal system down)
 
-## The other way to notify user error happened
-
-The CPI developer could define the `exception subprocess`, and invoke rest API to send email (or use the SMTP adapter).
-
 ## Email notification example
+
+Notification will splited by artifact(iflow).
 
 ![](https://res.cloudinary.com/digf90pwi/image/upload/v1554269455/2019-04-03_13-28-12_g8zmed.png)

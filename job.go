@@ -6,6 +6,7 @@ import (
 	"strconv"
 	"time"
 
+	"github.com/getsentry/raven-go"
 	"github.com/jasonlvhit/gocron"
 )
 
@@ -51,22 +52,27 @@ func (j *MonitorJob) checkError() {
 
 				log.Printf("found %d errors in %s tenant", errCount, j.tenant.Host)
 
-				notification := NotificationModel{
-					Tenant:  j.tenant,
-					LastRun: formatTime(j.lastRun),
-					Now:     formatTime(now),
-				}
+				// if sender settled
+				if j.sender != nil {
 
-				notification.Artifacts = GroupResultToArtifacts(msg.D.Results)
+					notification := NotificationModel{
+						Tenant:  j.tenant,
+						LastRun: formatTime(j.lastRun),
+						Now:     formatTime(now),
+					}
 
-				// send to each contact
-				for _, contact := range j.tenant.Contact {
-					// replace contact name
-					notification.ContactName = contact.Name
-					j.sender.SendEmail(EmailPayload{
-						To:      []string{contact.Email},
-						Content: FormatTemplate(notification),
-					})
+					notification.Artifacts = GroupResultToArtifacts(msg.D.Results)
+
+					// send to each contact
+					for _, contact := range j.tenant.Contact {
+						// replace contact name
+						notification.ContactName = contact.Name
+						j.sender.SendEmail(EmailPayload{
+							To:      []string{contact.Email},
+							Content: FormatTemplate(notification),
+						})
+					}
+
 				}
 
 				// capture messages to sentry
@@ -78,7 +84,7 @@ func (j *MonitorJob) checkError() {
 			j.lastRun = now
 
 		} else {
-
+			raven.CaptureError(err, map[string]string{})
 			log.Println(err)
 			log.Printf("Get infromation from %s failed, please check the tenant status", j.tenant.Host)
 
@@ -90,7 +96,13 @@ func (j *MonitorJob) checkError() {
 // StartAllJobs func
 func StartAllJobs(config Config) {
 
-	sender := NewSender(config.SMTP)
+	var sender *EmailSender
+
+	if config.SMTP.Server != "" {
+		sender = NewSender(config.SMTP)
+	} else {
+		log.Println("Not found email configuration, will not send email")
+	}
 
 	for _, t := range config.Tenants {
 		NewJob(t, sender)

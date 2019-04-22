@@ -6,6 +6,8 @@ import (
 	"net/url"
 	"time"
 
+	"github.com/getsentry/raven-go"
+
 	"github.com/imroc/req"
 )
 
@@ -84,6 +86,7 @@ func GetFailedInformationFor(t Tenant, from time.Time) (msg *MessageProcessingLo
 		},
 	)
 	if err != nil {
+		raven.CaptureError(err, map[string]string{})
 		return nil, err
 	}
 
@@ -97,6 +100,7 @@ func GetFailedInformationFor(t Tenant, from time.Time) (msg *MessageProcessingLo
 	if statusCode == 200 {
 
 		if err := res.ToJSON(rt); err != nil {
+			raven.CaptureError(err, map[string]string{})
 			return nil, err
 		}
 
