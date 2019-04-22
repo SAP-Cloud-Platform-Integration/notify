@@ -42,7 +42,6 @@ func (j *MonitorJob) checkError() {
 	go func() {
 
 		now := time.Now()
-		log.Printf("checking error for %s tenant", j.tenant.Host)
 
 		// retrive error messages
 		if msg, err := GetFailedInformationFor(j.tenant, j.lastRun); err == nil {
