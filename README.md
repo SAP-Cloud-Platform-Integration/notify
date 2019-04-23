@@ -2,8 +2,10 @@
 
 [![CircleCI](https://circleci.com/gh/SAP-Cloud-Platform-Integration/notify.svg?style=shield)](https://circleci.com/gh/SAP-Cloud-Platform-Integration/notify)
 [![codecov](https://codecov.io/gh/SAP-Cloud-Platform-Integration/notify/branch/master/graph/badge.svg)](https://codecov.io/gh/SAP-Cloud-Platform-Integration/notify)
-[![](https://images.microbadger.com/badges/image/theosun/cpi-notify.svg)](https://microbadger.com/images/theosun/cpi-notify "Get your own image badge on microbadger.com")
-[![](https://images.microbadger.com/badges/version/theosun/cpi-notify.svg)](https://microbadger.com/images/theosun/cpi-notify "Get your own version badge on microbadger.com")
+![Docker Pulls](https://img.shields.io/docker/pulls/theosun/cpi-notify.svg)
+![GitHub tag (latest SemVer)](https://img.shields.io/github/tag/SAP-Cloud-Platform-Integration/notify.svg)
+
+
 
 Send notifications when any integration messages failed
 
