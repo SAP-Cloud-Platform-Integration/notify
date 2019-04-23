@@ -73,6 +73,6 @@ This application will periodic fetch CPI processing log (based on the [SAP CPI O
 * timeout/connection reject(maybe the CPI tenant down)
 * some integration messages failed(maybe the external/internal system down)
 
-## [CHANGELOG](./CHANGELOG)
+## [CHANGELOG](./CHANGELOG.md)
 
 ## [LICENSE](./LICENSE)
