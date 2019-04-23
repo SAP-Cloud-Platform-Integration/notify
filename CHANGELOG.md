@@ -1,4 +1,16 @@
 
+<a name="v1.2.3"></a>
+## [v1.2.3](https://github.com/SAP-Cloud-Platform-Integration/notify/compare/v1.2.2...v1.2.3) (2019-04-23)
+
+### Common
+
+* **release:** new version
+
+### Features
+
+* **docker:** image build file update
+
+
 <a name="v1.2.2"></a>
 ## [v1.2.2](https://github.com/SAP-Cloud-Platform-Integration/notify/compare/v1.2.1...v1.2.2) (2019-04-23)
 
