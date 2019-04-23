@@ -20,8 +20,8 @@ ENV CONTACT_NAME admin
 # distribution image
 FROM alpine:3.9
 
-WORKDIR /go/src/app
-COPY --from=build-env /go/src/app /go/src/app
+WORKDIR /go/bin
+COPY --from=build-env /go/bin /go/bin
 
 # start
-CMD ["app", "start"]
+CMD ["./app", "start"]
