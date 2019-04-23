@@ -1,6 +1,7 @@
 package main
 
 import (
+	"regexp"
 	"strings"
 
 	"github.com/getsentry/raven-go"
@@ -31,6 +32,8 @@ func GroupResultToArtifacts(messages []Result) []Artifact {
 // CaptureMessages & send to sentry
 func CaptureMessages(tenant Tenant, msgs []Result) {
 
+	uriRemoveReg := regexp.MustCompile(`[a-zA-z]+://[^\s]*`)
+
 	for _, m := range msgs {
 		errMsg := ""
 		errException := ""
@@ -41,7 +44,7 @@ func CaptureMessages(tenant Tenant, msgs []Result) {
 			parts := strings.SplitN(originErrMsgLines[0], ":", 2)
 			if len(parts) == 2 {
 				errException = parts[0]
-				errMsg = parts[1]
+				errMsg = uriRemoveReg.ReplaceAllString(strings.TrimSpace(parts[1]), "{{URI REMOVED}}")
 			}
 		}
 
@@ -78,10 +81,11 @@ func CaptureMessages(tenant Tenant, msgs []Result) {
 					},
 				},
 				Extra: raven.Extra{
-					"Sender":        m.Sender,
-					"Receiver":      m.Receiver,
-					"TransactionId": *m.TransactionID,
-					"WebLink":       *m.AlternateWebLink,
+					"Sender":               m.Sender,
+					"Receiver":             m.Receiver,
+					"TransactionId":        *m.TransactionID,
+					"WebLink":              *m.AlternateWebLink,
+					"OriginalErrorMessage": originErrMsg,
 				},
 			},
 			map[string]string{},
