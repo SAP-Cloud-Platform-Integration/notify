@@ -5,6 +5,7 @@ import (
 	"os"
 
 	"github.com/getsentry/raven-go"
+	"github.com/imroc/req"
 
 	"github.com/urfave/cli"
 )
@@ -32,6 +33,8 @@ func main() {
 		cli.Command{
 			Name: "start",
 			Action: func(c *cli.Context) error {
+				// avoid timeout
+				req.SetTimeout(DefaultTimeout)
 				ravenDSN := c.GlobalString("ravendsn")
 				if ravenDSN != "" {
 					log.Printf("setup sentry(raven) log with DSN: %s", ravenDSN)

@@ -11,6 +11,11 @@ import (
 	"github.com/imroc/req"
 )
 
+// DefaultTimeout value
+//
+// extend golang short default timeout
+const DefaultTimeout = 60 * 10 * time.Second
+
 // CheckAPIAvailable func
 func CheckAPIAvailable(t Tenant) (bool, string) {
 	avaible := true
