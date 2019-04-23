@@ -73,8 +73,6 @@ This application will periodic fetch CPI processing log (based on the [SAP CPI O
 * timeout/connection reject(maybe the CPI tenant down)
 * some integration messages failed(maybe the external/internal system down)
 
-## Email notification example
+## [CHANGELOG](./CHANGELOG)
 
-Notification will splited by artifact(iflow).
-
-![](https://res.cloudinary.com/digf90pwi/image/upload/v1554269455/2019-04-03_13-28-12_g8zmed.png)
+## [LICENSE](./LICENSE)
