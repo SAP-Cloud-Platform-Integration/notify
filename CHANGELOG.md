@@ -1,4 +1,19 @@
 
+<a name="v1.2.5"></a>
+## [v1.2.5](https://github.com/SAP-Cloud-Platform-Integration/notify/compare/v1.2.4...v1.2.5) (2019-04-23)
+
+### Bug Fixes
+
+* CA lost
+
+### Common
+
+* **doc:** update
+* **doc:** update
+* **doc:** update
+* **release:** new version
+
+
 <a name="v1.2.4"></a>
 ## [v1.2.4](https://github.com/SAP-Cloud-Platform-Integration/notify/compare/v1.2.3...v1.2.4) (2019-04-23)
 
