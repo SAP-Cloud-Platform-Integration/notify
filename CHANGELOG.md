@@ -1,4 +1,16 @@
 
+<a name="v1.2.4"></a>
+## [v1.2.4](https://github.com/SAP-Cloud-Platform-Integration/notify/compare/v1.2.3...v1.2.4) (2019-04-23)
+
+### Bug Fixes
+
+* Dockerfile
+
+### Common
+
+* **release:** new version
+
+
 <a name="v1.2.3"></a>
 ## [v1.2.3](https://github.com/SAP-Cloud-Platform-Integration/notify/compare/v1.2.2...v1.2.3) (2019-04-23)
 
