@@ -20,6 +20,9 @@ ENV CONTACT_NAME admin
 # distribution image
 FROM alpine:3.9
 
+# add CAs
+RUN apk --no-cache add ca-certificates
+
 WORKDIR /go/bin
 COPY --from=build-env /go/bin /go/bin
 
