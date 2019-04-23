@@ -6,7 +6,6 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/getsentry/raven-go"
 	"github.com/jasonlvhit/gocron"
 )
 
@@ -83,7 +82,6 @@ func (j *MonitorJob) checkError() {
 			j.lastRun = now
 
 		} else {
-			raven.CaptureError(err, map[string]string{})
 			log.Println(err)
 			log.Printf("Get infromation from %s failed, please check the tenant status", j.tenant.Host)
 
