@@ -84,8 +84,8 @@ func GetFailedInformationFor(t Tenant, from time.Time) (msg *MessageProcessingLo
 			"$inlinecount": "allpages",
 			// in json format
 			"$format": "json",
-			// only fetch 100 records
-			"$top": 100,
+			// try to fetch all errors
+			"$top": 999999,
 			// only fetch failed logs
 			"$filter": fmt.Sprintf("Status eq 'FAILED' and LogEnd ge datetime'%s'", formatTime(from)),
 		},
