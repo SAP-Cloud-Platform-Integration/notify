@@ -18,12 +18,12 @@ func TestParseConfigFromPath(t *testing.T) {
 			"basic test",
 			args{"./sample_config.json"},
 			&Config{
-
 				SMTP: SMTP{
-					"username",
-					"password",
-					"1.2.3.4",
-					"465",
+					Username: "username",
+					Password: "password",
+					Server:   "1.2.3.4",
+					Port:     "465",
+					From:     "Theo Sun <theo.sun@abc.com>",
 				},
 				Tenants: []Tenant{Tenant{
 					60,

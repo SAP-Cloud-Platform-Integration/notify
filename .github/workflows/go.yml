@@ -26,4 +26,4 @@ jobs:
         # Artifact name
         name: SNAPSHOTS-Build
         # Directory containing files to upload
-        path: cli/build
+        path: build

@@ -4,7 +4,8 @@
     "username": "username",
     "password": "password",
     "server": "1.2.3.4",
-    "port": "465"
+    "port": "465",
+    "from": "Theo Sun <theo.sun@abc.com>"
   },
   "tenants": [
     {
