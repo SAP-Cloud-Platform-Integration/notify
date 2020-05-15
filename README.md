@@ -2,11 +2,10 @@
 
 [![CircleCI](https://circleci.com/gh/SAP-Cloud-Platform-Integration/notify.svg?style=shield)](https://circleci.com/gh/SAP-Cloud-Platform-Integration/notify)
 [![codecov](https://codecov.io/gh/SAP-Cloud-Platform-Integration/notify/branch/master/graph/badge.svg)](https://codecov.io/gh/SAP-Cloud-Platform-Integration/notify)
-[![Size](https://shields.beevelop.com/docker/image/image-size/theosun/cpi-notify/latest.svg?style=flat-square)](https://cloud.docker.com/repository/docker/theosun/cpi-notify)
-[![Layers](https://shields.beevelop.com/docker/image/layers/theosun/cpi-notify/latest.svg?style=flat-square)](https://cloud.docker.com/repository/docker/theosun/cpi-notify)
 ![GitHub tag (latest SemVer)](https://img.shields.io/github/tag/SAP-Cloud-Platform-Integration/notify.svg)
-
-
+[![Size](https://shields.beevelop.com/docker/image/image-size/thedockerimages/cpi-notify/latest.svg?style=flat-square)](https://cloud.docker.com/repository/docker/thedockerimages/cpi-notify)
+[![Layers](https://shields.beevelop.com/docker/image/layers/thedockerimages/cpi-notify/latest.svg?style=flat-square)](https://cloud.docker.com/repository/docker/thedockerimages/cpi-notify)
+[![Docker Automated build](https://img.shields.io/docker/cloud/automated/thedockerimages/cpi-notify.svg)](https://cloud.docker.com/repository/docker/thedockerimages/cpi-notify)
 
 Send notifications when any integration messages failed
 

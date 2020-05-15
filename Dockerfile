@@ -8,7 +8,7 @@ RUN apk update && apk upgrade && \
 # build
 WORKDIR /app
 COPY . .
-RUN go build -mod=vendor .
+RUN go build -mod=vendor -o app .
 
 # default env
 ENV ENV_CONFIG true
