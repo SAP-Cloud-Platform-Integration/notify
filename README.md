@@ -19,8 +19,6 @@ Therefore, the project hopes to provide a way to send notifications when an erro
 
 ## Deploy with docker
 
-Traditional deploy approach is `deprecated`, only support docker deployment now.
-
 With docker just run with: 
 
 ```bash
@@ -29,17 +27,17 @@ docker run -d --restart=always theosun/cpi-notify:latest
 
 **Required** env variables: 
 
-* CPI_HOST
-* CPI_USER	
-* CPI_PASSWORD
+* CPI_HOST -- cpi tmn server, `{Account Short Name}-tmn.{SSL Host}.{region}.hana.ondemand.com`
+* CPI_USER -- SAP ID User
+* CPI_PASSWORD -- SAP ID Password
 
 **Optional** env variables:
 
 * CHECK_INTERVAL - default `60` seconds
 
-* SMTP_SERVER	-- used for email integration
-* SMTP_PORT	-- SMTP Server PORT, default 465
-* SMTP_USER	
+* SMTP_SERVER	-- used for email integration, `tls` must be enabled
+* SMTP_PORT	-- SMTP Server PORT, default as `465`
+* SMTP_USER
 * SMTP_PASSWORD
 * SMTP_FROM -- 'FROM' header for SFTP	
 * CONTACT_NAME	-- user1,user2

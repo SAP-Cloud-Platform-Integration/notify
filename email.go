@@ -47,5 +47,4 @@ func NewSender(config SMTP) *EmailSender {
 		gomail.NewDialer(config.Server, int(port), config.Username, config.Password),
 	}
 	return rt
-
 }
