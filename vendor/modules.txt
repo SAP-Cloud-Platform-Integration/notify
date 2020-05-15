@@ -1,0 +1,44 @@
+# github.com/certifi/gocertifi v0.0.0-20200211180108-c7c1fbc02894
+## explicit
+github.com/certifi/gocertifi
+# github.com/cpuguy83/go-md2man/v2 v2.0.0-20190314233015-f79a8a8ca69d
+github.com/cpuguy83/go-md2man/v2/md2man
+# github.com/getsentry/raven-go v0.2.0
+## explicit
+github.com/getsentry/raven-go
+# github.com/google/go-cmp v0.4.0
+## explicit
+github.com/google/go-cmp/cmp
+github.com/google/go-cmp/cmp/internal/diff
+github.com/google/go-cmp/cmp/internal/flags
+github.com/google/go-cmp/cmp/internal/function
+github.com/google/go-cmp/cmp/internal/value
+# github.com/imroc/req v0.3.0
+## explicit
+github.com/imroc/req
+# github.com/jasonlvhit/gocron v0.0.0-20200423141508-ab84337f7963
+## explicit
+github.com/jasonlvhit/gocron
+# github.com/pkg/errors v0.9.1
+## explicit
+github.com/pkg/errors
+# github.com/russross/blackfriday/v2 v2.0.1
+github.com/russross/blackfriday/v2
+# github.com/shurcooL/sanitized_anchor_name v1.0.0
+github.com/shurcooL/sanitized_anchor_name
+# github.com/urfave/cli v1.22.4
+## explicit
+github.com/urfave/cli
+# gopkg.in/alexcesaro/quotedprintable.v3 v3.0.0-20150716171945-2caba252f4dc
+## explicit
+gopkg.in/alexcesaro/quotedprintable.v3
+# gopkg.in/gomail.v2 v2.0.0-20160411212932-81ebce5c23df
+## explicit
+gopkg.in/gomail.v2
+# gotest.tools v2.2.0+incompatible
+## explicit
+gotest.tools/assert
+gotest.tools/assert/cmp
+gotest.tools/internal/difflib
+gotest.tools/internal/format
+gotest.tools/internal/source
