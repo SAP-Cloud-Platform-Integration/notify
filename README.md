@@ -3,9 +3,9 @@
 [![CircleCI](https://circleci.com/gh/SAP-Cloud-Platform-Integration/notify.svg?style=shield)](https://circleci.com/gh/SAP-Cloud-Platform-Integration/notify)
 [![codecov](https://codecov.io/gh/SAP-Cloud-Platform-Integration/notify/branch/master/graph/badge.svg)](https://codecov.io/gh/SAP-Cloud-Platform-Integration/notify)
 ![GitHub tag (latest SemVer)](https://img.shields.io/github/tag/SAP-Cloud-Platform-Integration/notify.svg)
-[![Size](https://shields.beevelop.com/docker/image/image-size/thedockerimages/cpi-notify/latest.svg?style=flat-square)](https://cloud.docker.com/repository/docker/thedockerimages/cpi-notify)
-[![Layers](https://shields.beevelop.com/docker/image/layers/thedockerimages/cpi-notify/latest.svg?style=flat-square)](https://cloud.docker.com/repository/docker/thedockerimages/cpi-notify)
-[![Docker Automated build](https://img.shields.io/docker/cloud/automated/thedockerimages/cpi-notify.svg)](https://cloud.docker.com/repository/docker/thedockerimages/cpi-notify)
+[![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/thedockerimages/cpi-notify)](https://hub.docker.com/repository/docker/thedockerimages/cpi-notify)
+[![Size](https://shields.beevelop.com/docker/image/image-size/thedockerimages/cpi-notify/latest.svg?style=flat-square)](https://hub.docker.com/repository/docker/thedockerimages/cpi-notify)
+[![Layers](https://shields.beevelop.com/docker/image/layers/thedockerimages/cpi-notify/latest.svg?style=flat-square)](https://hub.docker.com/repository/docker/thedockerimages/cpi-notify)
 
 Send notifications when any integration messages failed
 
@@ -19,7 +19,7 @@ Therefore, the project hopes to provide a way to send notifications when an erro
 
 ## Deploy with docker
 
-Tranditional deploy approach is deprecated, only support docker deployment now.
+Traditional deploy approach is `deprecated`, only support docker deployment now.
 
 With docker just run with: 
 
@@ -31,7 +31,7 @@ docker run -d --restart=always theosun/cpi-notify:latest
 
 * CPI_HOST
 * CPI_USER	
-* CPI_PASSWORD	
+* CPI_PASSWORD
 
 **Optional** env variables:
 
