@@ -25,7 +25,7 @@ type EmailSender struct {
 // SendEmail func
 func (s *EmailSender) SendEmail(payload EmailPayload) {
 	m := gomail.NewMessage()
-	m.SetHeader("From", s.config.Username)
+	m.SetHeader("From", s.config.From)
 	m.SetHeader("To", payload.To...)
 	m.SetHeader("Subject", EMAIL_TITLE)
 	// set high priority

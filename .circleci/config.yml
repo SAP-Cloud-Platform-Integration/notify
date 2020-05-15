@@ -3,7 +3,7 @@ jobs:
 
   test:
     docker:
-      - image: circleci/golang:1.9
+      - image: circleci/golang:1.14
 
     working_directory: /go/src/github.com/SAP-Cloud-Platform-Integration/notify
     steps:
@@ -17,7 +17,7 @@ jobs:
 
   build:
     docker:
-      - image: circleci/golang:1.9
+      - image: circleci/golang:1.14
     working_directory: /go/src/github.com/SAP-Cloud-Platform-Integration/notify
     steps:
       - checkout
@@ -48,20 +48,6 @@ jobs:
             VERSION=${CIRCLE_TAG}
             ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${VERSION} ~/artifacts/build/
 
-  publish-docker-image:
-    working_directory: /go/src/github.com/SAP-Cloud-Platform-Integration/notify
-    docker:
-      - image: docker:18.06.3-ce-git
-    steps:
-      - checkout
-      - setup_remote_docker
-      - run: docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
-      - run: docker build -t theosun/cpi-notify:${CIRCLE_TAG} .
-      - run: docker tag theosun/cpi-notify:${CIRCLE_TAG} theosun/cpi-notify:latest
-      - run: docker push theosun/cpi-notify:${CIRCLE_TAG}
-      - run: docker push theosun/cpi-notify:latest
-
-
 workflows:
   version: 2
   main:
@@ -81,12 +67,6 @@ workflows:
       - publish-github-release:
           requires:
             - build
-          filters:
-            branches:
-              ignore: /.*/
-            tags:
-              only: /.*/
-      - publish-docker-image:
           filters:
             branches:
               ignore: /.*/

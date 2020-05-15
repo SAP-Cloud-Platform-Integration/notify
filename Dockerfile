@@ -6,10 +6,9 @@ RUN apk update && apk upgrade && \
     apk add --no-cache bash git openssh
 
 # build
-WORKDIR /go/src/app
+WORKDIR /app
 COPY . .
-RUN go get -d -v ./...
-RUN go install -v ./...
+RUN go build -mod=vendor .
 
 # default env
 ENV ENV_CONFIG true
@@ -23,8 +22,8 @@ FROM alpine:3.9
 # add CAs
 RUN apk --no-cache add ca-certificates
 
-WORKDIR /go/bin
-COPY --from=build-env /go/bin /go/bin
+WORKDIR /app
+COPY --from=build-env /app/app /app/app
 
 # start
 CMD ["./app", "start"]

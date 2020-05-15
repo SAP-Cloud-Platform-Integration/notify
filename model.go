@@ -7,8 +7,10 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"log"
+	"strings"
 
 	"github.com/urfave/cli"
 )
@@ -29,6 +31,7 @@ type Config struct {
 }
 
 type SMTP struct {
+	From     string `json:"from"`
 	Username string `json:"username"`
 	Password string `json:"password"`
 	Server   string `json:"server"`
@@ -66,9 +69,29 @@ func ParseConfigFromPath(path string) *Config {
 	return rt
 }
 
-func ParseConfigFromEnv(c *cli.Context) *Config {
+// ParseConfigFromEnv func
+func ParseConfigFromEnv(c *cli.Context) (*Config, error) {
+	// support multi contacts
+	contactNames := strings.Split(c.GlobalString("contact"), ",")
+	emails := strings.Split(c.GlobalString("email"), ",")
+
+	if len(contactNames) != len(emails) {
+		return nil, fmt.Errorf("contact length is not match email length")
+	}
+
+	contacts := []Contact{}
+
+	for i := 0; i < len(emails); i++ {
+		contacts = append(contacts, Contact{
+			Name:  contactNames[i],
+			Email: emails[i],
+		})
+	}
+
+	// create config
 	return &Config{
 		SMTP{
+			From:     c.GlobalString("smtpfrom"),
 			Server:   c.GlobalString("smtpserver"),
 			Port:     c.GlobalString("smtpport"),
 			Username: c.GlobalString("smtpuser"),
@@ -81,13 +104,8 @@ func ParseConfigFromEnv(c *cli.Context) *Config {
 				Host:     c.GlobalString("cpihost"),
 				Username: c.GlobalString("cpiuser"),
 				Password: c.GlobalString("cpipassword"),
-				Contact: []Contact{
-					Contact{
-						Name:  c.GlobalString("contact"),
-						Email: c.GlobalString("email"),
-					},
-				},
+				Contact:  contacts,
 			},
 		},
-	}
+	}, nil
 }

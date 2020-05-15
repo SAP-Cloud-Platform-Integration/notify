@@ -44,8 +44,11 @@ func main() {
 				}
 				if c.GlobalBool("env") {
 					log.Printf("start notify with config from env")
-					config := ParseConfigFromEnv(c)
-					StartAllJobs(*config)
+					if config, err := ParseConfigFromEnv(c); err != nil {
+						StartAllJobs(*config)
+					} else {
+						log.Println(err)
+					}
 				} else {
 					configPath := c.GlobalString("config")
 					log.Printf("start notify with config %s", configPath)

@@ -25,7 +25,7 @@ Tranditional deploy approach is deprecated, only support docker deployment now.
 With docker just run with: 
 
 ```bash
-docker run -d theosun/cpi-notify
+docker run -d --restart=always theosun/cpi-notify:latest
 ```
 
 **Required** env variables: 
@@ -38,12 +38,13 @@ docker run -d theosun/cpi-notify
 
 * CHECK_INTERVAL - default `60` seconds
 
-* SMTP_SERVER	- used for email integration
-* SMTP_PORT	
+* SMTP_SERVER	-- used for email integration
+* SMTP_PORT	-- SMTP Server PORT, default 465
 * SMTP_USER	
-* SMTP_PASSWORD	
-* CONTACT_NAME	
-* CONTACT_EMAIL
+* SMTP_PASSWORD
+* SMTP_FROM -- 'FROM' header for SFTP	
+* CONTACT_NAME	-- user1,user2
+* CONTACT_EMAIL -- user1@corp.com,user2.corp.com
 
 * RAVEN_DSN - used for sentry integration
 
@@ -60,7 +61,7 @@ docker run -d theosun/cpi-notify
 - [x] user document
 - [x] unit tests (private)
 
-## Hign level design
+## High level design
 
 This application will periodic fetch CPI processing log (based on the [SAP CPI OData API](https://api.sap.com/package/CloudIntegrationAPI)), when some processing message `FAILED`, send email to notify user.
 
