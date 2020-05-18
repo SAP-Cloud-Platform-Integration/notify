@@ -20,7 +20,7 @@ ENV CONTACT_NAME admin
 FROM alpine:3.9
 
 # add CAs
-RUN apk --no-cache add ca-certificates
+RUN apk --no-cache add ca-certificates libc6-compat
 
 WORKDIR /app
 COPY --from=build-env /app/app /app/app
